@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
         font-size: 36px;
 
         @media (max-width: 800px) {
-            font-size: 20px;
+            font-size: 26px;
         }
     }
     html, body, div, span, applet, object, iframe,
@@ -28,8 +28,6 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         border: 0;
-        /* font-size: 100%; */
-        /* font: inherit; */
         vertical-align: baseline;
     }
     /* HTML5 display-role reset for older browsers */
