@@ -5,6 +5,7 @@ export default function Login() {
     return (
         <Container>
             <InputContainer>
+                <h1>Além de Marte</h1>
                 <span>Bem vindo! 🚀</span>
 
                 <form>

@@ -28,9 +28,14 @@ export const InputContainer = styled.div`
         margin-left: 0;
     }
 
-    span {
+    h1, span {
         font-style: italic;
-        font-size: 1rem;
+        font-size: 0.8rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
     }
 
     input {
