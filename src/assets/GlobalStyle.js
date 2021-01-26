@@ -5,7 +5,13 @@ const GlobalStyle = createGlobalStyle`
     v2.0 | 20110126
     License: none (public domain)
     */
+    html {
+        font-size: 36px;
 
+        @media (max-width: 800px) {
+            font-size: 20px;
+        }
+    }
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
     a, abbr, acronym, address, big, cite, code,
@@ -22,8 +28,8 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         padding: 0;
         border: 0;
-        font-size: 100%;
-        font: inherit;
+        /* font-size: 100%; */
+        /* font: inherit; */
         vertical-align: baseline;
     }
     /* HTML5 display-role reset for older browsers */
@@ -33,6 +39,7 @@ const GlobalStyle = createGlobalStyle`
     }
     body {
         line-height: 1;
+        font-family: 'Sarabun', 'sans-serif';
     }
     ol, ul {
         list-style: none;
@@ -48,6 +55,14 @@ const GlobalStyle = createGlobalStyle`
     table {
         border-collapse: collapse;
         border-spacing: 0;
+    }
+    input, button {
+        outline: none;
+        border: none;
+    }
+
+    * {
+        box-sizing: border-box;
     }
 `;
 
