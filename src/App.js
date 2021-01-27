@@ -2,13 +2,13 @@ import React from 'react';
 import GlobalStyle from './assets/GlobalStyle';
 
 import { Login } from './pages';
-import UserContext from './contexts/UserContext';
+import UserProvider from './contexts/UserContext';
 
 export default function App() {
     return (
-        <UserContext>
+        <UserProvider>
             <GlobalStyle />
             <Login />
-        </UserContext>
+        </UserProvider>
     );
 }
