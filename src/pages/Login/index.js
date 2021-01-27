@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 
+import { UserContext } from '../../contexts/UserContext';
 import { Container, InputContainer } from './LoginStyles';
 
 export default function Login() {
     const [name, setName] = useState('');
+    const { setToken, setUserName } = useContext(UserContext);
 
     const signIn = e => {
         e.preventDefault();
@@ -16,9 +18,10 @@ export default function Login() {
         axios
             .post('http://localhost:4000/users', { name })
             .then(r => {
-                console.log(r)
+                setUserName(r.data.name);
+                setToken(r.data.session.token);
             })
-            .catch(err => console.log(err.response));
+            .catch(() => alert('Houve um problema ao fazer o login. Tente novamente mais tarde.'));
     };
 
     return (
