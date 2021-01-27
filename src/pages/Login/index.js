@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { UserContext } from '../../contexts/UserContext';
@@ -8,6 +9,7 @@ export default function Login() {
     const [name, setName] = useState('');
     const [loading, setLoading] = useState(false);
     const { setToken, setUserName } = useContext(UserContext);
+    const history = useHistory();
 
     const signIn = e => {
         e.preventDefault();
@@ -24,6 +26,7 @@ export default function Login() {
                 setLoading(false);
                 setUserName(r.data.name);
                 setToken(r.data.session.token);
+                history.push('/home');
             })
             .catch(() => {
                 setLoading(false);
