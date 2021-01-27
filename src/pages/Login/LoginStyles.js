@@ -13,6 +13,7 @@ export const Container = styled.div`
 
     ${mediaQuery} {
         justify-content: center;
+        background-position: 72% 50%;
     }
 `;
 

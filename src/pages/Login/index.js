@@ -15,7 +15,9 @@ export default function Login() {
 
         axios
             .post('http://localhost:4000/users', { name })
-            .then(r => console.log(r))
+            .then(r => {
+                console.log(r)
+            })
             .catch(err => console.log(err.response));
     };
 
