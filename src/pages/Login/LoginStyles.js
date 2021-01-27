@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import mediaQuery from '../../assets/mediaQuery';
 
 export const Container = styled.div`
@@ -48,15 +48,26 @@ export const InputContainer = styled.div`
         border-radius: 8px;
         margin: 15px 0;
     }
-    
-    button {
-        font-family: 'Sarabun', sans-serif;
-        font-size: 0.6rem;
-        width: 100%;
-        height: 45px;
-        background: #0697FF;
-        border-radius: 8px;
-        cursor: pointer;
-        color: white;
+`;
+
+export const Button = styled.button`
+    font-family: 'Sarabun', sans-serif;
+    font-size: 0.6rem;
+    width: 100%;
+    height: 45px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+
+    ${({ isLoading }) => (
+        css`
+            background: ${isLoading ? '#BABABA' : '#0697FF'}};
+            font-style: ${isLoading ? 'italic' : 'initial'}};
+            pointer-events: ${isLoading ? 'none' : 'initial'};
+        `
+    )}    
+
+    &:hover {
+        background: #5EADE5;
     }
 `;
