@@ -1,13 +1,20 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-import { Container, DataContainer, PhotoContainer, InfoContainer } from './HomeStyles';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import { PhotosContext } from '../../contexts/PhotosContext';
 import Header from '../../components/Header';
+import {
+    Container,
+    DataContainer,
+    PhotoContainer,
+    InfoContainer,
+    Photo
+} from './HomeStyles';
 
 export default function Home() {
+    const [shownPhotoIndex, setShownPhotoIndex] = useState(1);
     const { photos, setPhotos } = useContext(PhotosContext);
     const history = useHistory();
 
@@ -29,16 +36,7 @@ export default function Home() {
         const _getPhotos = () => {
             axios
                 .get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${mostRecentDate}&api_key=${apiKey}`)
-                .then(r => {
-                    const photos = r.data.photos.map(p => {
-                        return {
-                            data: p,
-                            userHasViewed: false
-                        };
-                    });
-
-                    setPhotos(photos);
-                })
+                .then(r => setPhotos(r.data.photos))
                 .catch(() => {
                     alert('Erro ao carregar conteúdo');
                     history.push('/');
@@ -52,9 +50,9 @@ export default function Home() {
             <Container>
                 <DataContainer>
                     <PhotoContainer>
-                        <div><AiOutlineArrowLeft color='white' size='50px' /></div>
-                        <Photo></Photo>
-                        <div><AiOutlineArrowRight color='white' size='50px' /></div>
+                        <div><AiOutlineArrowLeft color='white' size='50px' cursor='pointer' /></div>
+                        <Photo photoUrl={photos[shownPhotoIndex].img_src}></Photo>
+                        <div><AiOutlineArrowRight color='white' size='50px' cursor='pointer' /></div>
                     </PhotoContainer>
                     <InfoContainer></InfoContainer>
                 </DataContainer>
