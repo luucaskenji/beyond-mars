@@ -44,6 +44,15 @@ export default function Home() {
             }
     }, []);
 
+    const shownPhoto = photos[shownPhotoIndex];
+    let photoDate;
+    if (shownPhoto) {
+        photoDate = shownPhoto.earth_date;
+        const splitted = photoDate.split('-');
+
+        photoDate = `${splitted[2]}/${splitted[1]}/${splitted[0]}`;
+    }
+
     return (
         <>
             <Header />
@@ -51,10 +60,19 @@ export default function Home() {
                 <DataContainer>
                     <PhotoContainer>
                         <div><AiOutlineArrowLeft color='white' size='50px' cursor='pointer' /></div>
-                        <Photo photoUrl={photos[shownPhotoIndex].img_src}></Photo>
+                        <Photo photoUrl={shownPhoto && shownPhoto.img_src}></Photo>
                         <div><AiOutlineArrowRight color='white' size='50px' cursor='pointer' /></div>
                     </PhotoContainer>
-                    <InfoContainer></InfoContainer>
+                    <InfoContainer>
+                        <div>
+                            <button>Curtir</button>
+                            <span>curtidas</span>
+                        </div>
+                        <div>
+                            <span>Rover: {shownPhoto && shownPhoto.rover.name}</span>
+                            <span>Data: {photoDate}</span>
+                        </div>
+                    </InfoContainer>
                 </DataContainer>
             </Container>
         </>

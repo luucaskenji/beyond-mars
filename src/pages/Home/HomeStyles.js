@@ -32,6 +32,41 @@ export const InfoContainer = styled.div`
     height: 100%;
     background: #121212;
     border-radius: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 150px;
+    padding: 20px 32px;
+
+    span {
+        color: white;
+        font-size: 0.5rem;
+        display: block;
+    }
+
+    div:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        button {
+            width: 80px;
+            height: 45px;
+            font-size: 0.5rem;
+            color: white;
+            background: #0697FF;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    }
+
+    div:last-child {
+        justify-self: center;
+        
+        span {
+            margin-bottom: 40px;
+            font-size: 0.7rem;
+        }
+    }
 `;
 
 export const Photo = styled.div`
