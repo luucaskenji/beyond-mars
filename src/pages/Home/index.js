@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 import { Container } from './HomeStyles';
+import Header from '../../components/Header';
 
 export default function Home() {
     const history = useHistory();
@@ -10,7 +11,7 @@ export default function Home() {
     useEffect(() => {
         const apiKey = process.env.REACT_APP_API_KEY;
         let mostRecentDate;
-        
+
         axios
             .get(`https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity?api_key=${apiKey}`)
             .then(r => {
@@ -34,6 +35,9 @@ export default function Home() {
     }, []);
 
     return (
-        <Container>Home Page</Container>
+        <>
+            <Header />
+            <Container>Home Page</Container>
+        </>
     );
 }
