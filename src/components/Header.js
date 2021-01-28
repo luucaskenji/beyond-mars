@@ -19,13 +19,17 @@ export default function Header() {
 }
 
 const StyledHeader = styled.header`
+    width: 100vw;
     height: 85px;
-    background: black;
+    background: #121212;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 90px;
+    position: absolute;
+    top: 0;
+    left: 0;
 
     button {
         font-family: 'Sarabun', sans-serif;

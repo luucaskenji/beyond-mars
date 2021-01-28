@@ -5,5 +5,27 @@ export const Container = styled.div`
     height: 100vh;
     display: flex;
     justify-content: center;
-    background-image: url('https://lh3.googleusercontent.com/proxy/JYKgzjmPZf4n46_OcUSmtWWz8lNiZomBEpe-0oy2h5LAEPPJNAyuYOendX-P8IDcRedrGzzOSmoTGCYPAC4kMYMZWWvbJo_9D9AejS93dgHOfFFLm2rqiqIibuNd2qXNuTYhJQDpGs16xTuWmTGsbMduRJerVGlHhIQkzB7xdESvhejRfOtnm5ID')
+    align-items: center;
+    background-image: url('https://thumbs.gfycat.com/GregariousEssentialElver-size_restricted.gif');
+    padding-top: 85px;
+`;
+
+export const DataContainer = styled.div`
+    width: 70vw;
+    min-width: 755px;
+    height: 75vh;
+    border-radius: 20px;
+    display: flex;
+`;
+
+export const PhotoContainer = styled.div`
+    width: 65%;
+    height: 100%;
+    background: red;
+`;
+
+export const InfoContainer = styled.div`
+    width: 35%;
+    height: 100%;
+    background: blue;
 `;
