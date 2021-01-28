@@ -56,6 +56,10 @@ export const InfoContainer = styled.div`
             background: #0697FF;
             border-radius: 8px;
             cursor: pointer;
+
+            &:hover {
+                background: #5EADE5;
+            }
         }
     }
 

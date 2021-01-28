@@ -5,6 +5,7 @@ import axios from 'axios';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import { PhotosContext } from '../../contexts/PhotosContext';
 import Header from '../../components/Header';
+import PhotoInfo from '../../components/PhotoInfo';
 import {
     Container,
     DataContainer,
@@ -74,7 +75,7 @@ export default function Home() {
                                 display={shownPhotoIndex === 0 ? 'none' : 'initial'}
                             />
                         </div>
-                        <Photo photoUrl={shownPhoto && shownPhoto.img_src}></Photo>
+                        <Photo photoUrl={shownPhoto && shownPhoto.img_src} />
                         <div>
                             <AiOutlineArrowRight
                                 color='white'
@@ -87,14 +88,7 @@ export default function Home() {
                     </PhotoContainer>
 
                     <InfoContainer>
-                        <div>
-                            <button>Curtir</button>
-                            <span>curtidas</span>
-                        </div>
-                        <div>
-                            <span>Rover: {shownPhoto && shownPhoto.rover.name}</span>
-                            <span>Data: {photoDate}</span>
-                        </div>
+                        <PhotoInfo shownPhoto={shownPhoto} photoDate={photoDate} />
                     </InfoContainer>
                 </DataContainer>
             </Container>
