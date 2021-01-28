@@ -44,6 +44,12 @@ export default function Home() {
             }
     }, []);
 
+    const getAnotherPhoto = param => {
+        param === 'prev'
+            ? setShownPhotoIndex(shownPhotoIndex - 1)
+            : setShownPhotoIndex(shownPhotoIndex + 1);
+    }
+    
     const shownPhoto = photos[shownPhotoIndex];
     let photoDate;
     if (shownPhoto) {
@@ -59,10 +65,27 @@ export default function Home() {
             <Container>
                 <DataContainer>
                     <PhotoContainer>
-                        <div><AiOutlineArrowLeft color='white' size='50px' cursor='pointer' /></div>
+                        <div>
+                            <AiOutlineArrowLeft
+                                color='white'
+                                size='50px'
+                                cursor='pointer'
+                                onClick={() => getAnotherPhoto('prev')}
+                                display={shownPhotoIndex === 0 ? 'none' : 'initial'}
+                            />
+                        </div>
                         <Photo photoUrl={shownPhoto && shownPhoto.img_src}></Photo>
-                        <div><AiOutlineArrowRight color='white' size='50px' cursor='pointer' /></div>
+                        <div>
+                            <AiOutlineArrowRight
+                                color='white'
+                                size='50px'
+                                cursor='pointer'
+                                onClick={() => getAnotherPhoto('next')}
+                                display={shownPhotoIndex === photos.length ? 'none' : 'initial'}
+                            />
+                        </div>
                     </PhotoContainer>
+
                     <InfoContainer>
                         <div>
                             <button>Curtir</button>
