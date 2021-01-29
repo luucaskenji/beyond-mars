@@ -42,7 +42,7 @@ export default function Home() {
                     alert('Erro ao carregar conteúdo');
                     history.push('/');
                 });
-            }
+        };
     }, []);
 
     const getAnotherPhoto = param => {
