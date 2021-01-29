@@ -8,7 +8,7 @@ import { Container, InputContainer, Button } from './LoginStyles';
 export default function Login() {
     const [name, setName] = useState('');
     const [loading, setLoading] = useState(false);
-    const { setToken, setUserName } = useContext(UserContext);
+    const { setUserName } = useContext(UserContext);
     const history = useHistory();
 
     const signIn = e => {
@@ -21,11 +21,10 @@ export default function Login() {
         }
 
         axios
-            .post('http://localhost:4000/users', { name })
+            .post('http://localhost:4000/users', { name }, { withCredentials: true })
             .then(r => {
                 setLoading(false);
                 setUserName(r.data.name);
-                setToken(r.data.session.token);
                 history.push('/home');
             })
             .catch(() => {
