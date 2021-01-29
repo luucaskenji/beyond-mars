@@ -34,7 +34,7 @@ export default function PhotoInfo({ shownPhoto, photoDate }) {
         <>
             <div>
                 <Button onClick={likePhoto} isLoading={isLoading}>Curtir</Button>
-                <span>{photoLikes} curtidas</span>
+                <span>{photoLikes === 1 ? `${photoLikes} curtida` : `${photoLikes} curtidas` }</span>
             </div>
             <div>
                 <span>Rover: {shownPhoto && shownPhoto.rover.name}</span>

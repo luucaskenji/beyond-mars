@@ -15,8 +15,8 @@ import {
 } from './HomeStyles';
 
 export default function Home() {
-    const [shownPhotoIndex, setShownPhotoIndex] = useState(1);
     const { photos, setPhotos } = useContext(PhotosContext);
+    const [shownPhotoIndex, setShownPhotoIndex] = useState(0);
     const history = useHistory();
 
     useEffect(() => {
@@ -49,6 +49,7 @@ export default function Home() {
         param === 'prev'
             ? setShownPhotoIndex(shownPhotoIndex - 1)
             : setShownPhotoIndex(shownPhotoIndex + 1);
+
     }
     
     const shownPhoto = photos[shownPhotoIndex];
