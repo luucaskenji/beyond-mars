@@ -21,7 +21,7 @@ export default function Login() {
         }
 
         axios
-            .post('http://localhost:4000/users', { name }, { withCredentials: true })
+            .post(`${process.env.REACT_APP_BACK_END_URL}/users`, { name }, { withCredentials: true })
             .then(r => {
                 setLoading(false);
                 setUserName(r.data.name);

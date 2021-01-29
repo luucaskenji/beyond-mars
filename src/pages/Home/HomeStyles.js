@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
@@ -47,20 +47,6 @@ export const InfoContainer = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        button {
-            width: 80px;
-            height: 45px;
-            font-size: 0.5rem;
-            color: white;
-            background: #0697FF;
-            border-radius: 8px;
-            cursor: pointer;
-
-            &:hover {
-                background: #5EADE5;
-            }
-        }
     }
 
     div:last-child {
@@ -71,6 +57,27 @@ export const InfoContainer = styled.div`
             font-size: 0.7rem;
         }
     }
+`;
+
+export const Button = styled.button`
+    width: 80px;
+    height: 45px;
+    font-size: 0.5rem;
+    color: white;
+    background: #0697FF;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+        background: #5EADE5;
+    }
+
+    ${({ isLoading }) => (
+        css`
+            background: ${isLoading ? '#BABABA' : '#0697FF'}};
+            pointer-events: ${isLoading ? 'none' : 'initial'};
+        `
+    )} 
 `;
 
 export const Photo = styled.div`
