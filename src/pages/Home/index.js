@@ -49,7 +49,6 @@ export default function Home() {
         param === 'prev'
             ? setShownPhotoIndex(shownPhotoIndex - 1)
             : setShownPhotoIndex(shownPhotoIndex + 1);
-
     }
     
     const shownPhoto = photos[shownPhotoIndex];

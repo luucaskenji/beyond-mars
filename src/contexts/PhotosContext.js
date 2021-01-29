@@ -4,9 +4,17 @@ export const PhotosContext = createContext();
 
 export default function PhotosProvider({ children }) {
     const [photos, setPhotos] = useState([]);
+    const [likedPhotosIds, setLikedPhotosIds] = useState([]);
     
+    const value = {
+        photos,
+        setPhotos,
+        likedPhotosIds,
+        setLikedPhotosIds
+    };
+
     return (
-        <PhotosContext.Provider value={{ photos, setPhotos }}>
+        <PhotosContext.Provider value={value}>
             {children}
         </PhotosContext.Provider>
     );
