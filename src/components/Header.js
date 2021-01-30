@@ -10,6 +10,7 @@ export default function Header() {
     const { userName } = useContext(UserContext);
 
     const editName = () => {
+        if (newUserName.length < 2) return alert('O nome de usuário deve ter ao menos dois caracteres');
         
     }
 

@@ -8,7 +8,7 @@ import { Container, InputContainer, Button } from './LoginStyles';
 export default function Login() {
     const [name, setName] = useState('');
     const [loading, setLoading] = useState(false);
-    const { setUserName } = useContext(UserContext);
+    const { setUserName, setUserId } = useContext(UserContext);
     const history = useHistory();
 
     const signIn = e => {
@@ -25,12 +25,13 @@ export default function Login() {
             .then(r => {
                 setLoading(false);
                 setUserName(r.data.name);
+                setUserId(r.data.id);
                 history.push('/home');
             })
             .catch(() => {
                 setLoading(false);
-                alert('Houve um problema ao fazer o login. Tente novamente mais tarde.'
-            )});
+                alert('Houve um problema ao fazer o login. Tente novamente mais tarde.');
+            });
     };
 
     return (
