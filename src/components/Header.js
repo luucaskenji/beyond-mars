@@ -1,17 +1,32 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 import { UserContext } from '../contexts/UserContext';
 
 export default function Header() {
+    const [edit, setEdit] = useState(false);
+    const [newUserName, setNewUserName] = useState('');
     const { userName } = useContext(UserContext);
+
+    const editName = () => {
+        
+    }
 
     return (
         <StyledHeader>
-            <span>{`Olá, ${userName}`}</span>
+            {
+                edit 
+                    ? <NameInput
+                        onChange={e => setNewUserName(e.target.value)}
+                        value={newUserName}
+                        onKeyPress={e => e.key === 'Enter' && editName} 
+                    />
+                    : <span>{`Olá, ${userName}`}</span>
+            }
 
             <div>
-                <button>Editar Nome</button>
+                <button onClick={() => setEdit(!edit)}>Editar Nome</button>
                 <button>Sair</button>
             </div>
         </StyledHeader>
@@ -45,4 +60,11 @@ const StyledHeader = styled.header`
     button:last-child {
         margin-left: 70px;
     }
+`;
+
+const NameInput = styled.input`
+    height: 50px;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 0.6rem;
+    padding-left: 12px;
 `;
