@@ -7,11 +7,20 @@ import { UserContext } from '../contexts/UserContext';
 export default function Header() {
     const [edit, setEdit] = useState(false);
     const [newUserName, setNewUserName] = useState('');
-    const { userName } = useContext(UserContext);
+    const { userName, setUserName, userId } = useContext(UserContext);
 
     const editName = () => {
         if (newUserName.length < 2) return alert('O nome de usuário deve ter ao menos dois caracteres');
         
+        axios.put(
+            `${process.env.REACT_APP_BACK_END_URL}/users/${userId}`,
+            { name: newUserName },
+            { withCredentials: true }
+        )
+        .then(r => {
+            setUserName(r.data.name);
+            setEdit(false);
+        });
     }
 
     return (
@@ -21,7 +30,7 @@ export default function Header() {
                     ? <NameInput
                         onChange={e => setNewUserName(e.target.value)}
                         value={newUserName}
-                        onKeyPress={e => e.key === 'Enter' && editName} 
+                        onKeyPress={e => e.key === 'Enter' && editName()} 
                     />
                     : <span>{`Olá, ${userName}`}</span>
             }
