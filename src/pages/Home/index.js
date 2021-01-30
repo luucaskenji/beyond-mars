@@ -64,33 +64,37 @@ export default function Home() {
         <>
             <Header />
             <Container>
-                <DataContainer>
-                    <PhotoContainer>
-                        <div>
-                            <AiOutlineArrowLeft
-                                color='white'
-                                size='50px'
-                                cursor='pointer'
-                                onClick={() => getAnotherPhoto('prev')}
-                                display={shownPhotoIndex === 0 ? 'none' : 'initial'}
-                            />
-                        </div>
-                        <Photo photoUrl={shownPhoto && shownPhoto.img_src} />
-                        <div>
-                            <AiOutlineArrowRight
-                                color='white'
-                                size='50px'
-                                cursor='pointer'
-                                onClick={() => getAnotherPhoto('next')}
-                                display={shownPhotoIndex === photos.length ? 'none' : 'initial'}
-                            />
-                        </div>
-                    </PhotoContainer>
+                {photos.length > 0
+                    ? (<DataContainer>
+                            <PhotoContainer>
+                                <div>
+                                    <AiOutlineArrowLeft
+                                        color='white'
+                                        size='50px'
+                                        cursor='pointer'
+                                        onClick={() => getAnotherPhoto('prev')}
+                                        display={shownPhotoIndex === 0 ? 'none' : 'initial'}
+                                    />
+                                </div>
+                                <Photo photoUrl={shownPhoto && shownPhoto.img_src} />
+                                <div>
+                                    <AiOutlineArrowRight
+                                        color='white'
+                                        size='50px'
+                                        cursor='pointer'
+                                        onClick={() => getAnotherPhoto('next')}
+                                        display={shownPhotoIndex === photos.length ? 'none' : 'initial'}
+                                    />
+                                </div>
+                            </PhotoContainer>
 
-                    <InfoContainer>
-                        <PhotoInfo shownPhoto={shownPhoto} photoDate={photoDate} />
-                    </InfoContainer>
-                </DataContainer>
+                            <InfoContainer>
+                                <PhotoInfo shownPhoto={shownPhoto} photoDate={photoDate} />
+                            </InfoContainer>
+                        </DataContainer>)
+
+                    : <span>Carregando...</span>
+                }
             </Container>
         </>
     );

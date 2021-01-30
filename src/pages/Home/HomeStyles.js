@@ -8,6 +8,11 @@ export const Container = styled.div`
     align-items: center;
     background-image: url('https://thumbs.gfycat.com/GregariousEssentialElver-size_restricted.gif');
     padding-top: 85px;
+
+    & > span {
+        color: white;
+        font-size: 0.6rem;
+    }
 `;
 
 export const DataContainer = styled.div`
