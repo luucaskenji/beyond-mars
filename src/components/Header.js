@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
 import { UserContext } from '../contexts/UserContext';
+import { PhotosContext } from '../contexts/PhotosContext';
 
 export default function Header() {
     const [edit, setEdit] = useState(false);
     const [newUserName, setNewUserName] = useState('');
     const { userName, setUserName, userId } = useContext(UserContext);
+    const { setLikedPhotosIds } = useContext(PhotosContext);
+    const history = useHistory();
 
     const editName = () => {
         if (newUserName.length < 2) return alert('O nome de usuário deve ter ao menos dois caracteres');
@@ -21,6 +25,17 @@ export default function Header() {
             setUserName(r.data.name);
             setEdit(false);
         });
+    };
+
+    const signOut = () => {
+        axios
+            .post(`${process.env.REACT_APP_BACK_END_URL}/users/${userId}/sign-out`)
+            .then(() => {
+                setUserName('');
+                setLikedPhotosIds([]);
+                history.push('/');
+            })
+            .catch(() => alert('Erro ao encerrar sessão'));
     }
 
     return (
@@ -37,7 +52,7 @@ export default function Header() {
 
             <div>
                 <button onClick={() => setEdit(!edit)}>Editar Nome</button>
-                <button>Sair</button>
+                <button onClick={signOut}>Sair</button>
             </div>
         </StyledHeader>
     );
