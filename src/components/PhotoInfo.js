@@ -8,6 +8,7 @@ export default function PhotoInfo({ shownPhoto, photoDate }) {
     const [isLoading, setIsLoading] = useState(false);
     const [photoLikes, setPhotoLikes] = useState(0);
     const { likedPhotosIds, setLikedPhotosIds } = useContext(PhotosContext);
+    const userHasLiked = shownPhoto && likedPhotosIds.includes(shownPhoto.id);
 
     useEffect(() => {
         if (shownPhoto) {
@@ -18,16 +19,22 @@ export default function PhotoInfo({ shownPhoto, photoDate }) {
                 })
                 .catch(() => alert('Erro ao buscar dados de curtidas da foto'));
         }
-    }, [shownPhoto]);
+    }, [shownPhoto, userHasLiked]);
 
-    const likePhoto = () => {
+    const reactToPhoto = () => {
         setIsLoading(true);
+        const reaction = userHasLiked ? 'dislikes'  : 'likes';
 
         axios
-            .post(`${process.env.REACT_APP_BACK_END_URL}/photos/${shownPhoto.id}/likes`, null, { withCredentials: true })
+            .post(`${process.env.REACT_APP_BACK_END_URL}/photos/${shownPhoto.id}/${reaction}`, null, { withCredentials: true })
             .then(() => {
                 setIsLoading(false);
-                setLikedPhotosIds([...likedPhotosIds, shownPhoto.id]);
+
+                if (!likedPhotosIds.includes(shownPhoto.id))
+                    setLikedPhotosIds([...likedPhotosIds, shownPhoto.id]);
+                else {
+                    setLikedPhotosIds(likedPhotosIds.filter(id => id !== shownPhoto.id));
+                }
             })
             .catch(() => {
                 setIsLoading(false);
@@ -35,12 +42,10 @@ export default function PhotoInfo({ shownPhoto, photoDate }) {
             });
     };
 
-    const userHasLiked = shownPhoto && likedPhotosIds.includes(shownPhoto.id);
-
     return (
         <>
             <div>
-                <Button onClick={likePhoto} isLoading={isLoading} userHasLiked={userHasLiked} >
+                <Button onClick={reactToPhoto} isLoading={isLoading} userHasLiked={userHasLiked} >
                     {userHasLiked ? 'Curtiu!' : 'Curtir'}
                 </Button>
 
