@@ -29,7 +29,7 @@ export default function Header() {
 
     const signOut = () => {
         axios
-            .post(`${process.env.REACT_APP_BACK_END_URL}/users/${userId}/sign-out`)
+            .post(`${process.env.REACT_APP_BACK_END_URL}/users/${userId}/sign-out`, null, { withCredentials: true })
             .then(() => {
                 setUserName('');
                 setLikedPhotosIds([]);
