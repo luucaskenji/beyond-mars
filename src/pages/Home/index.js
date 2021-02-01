@@ -70,7 +70,7 @@ export default function Home() {
                                 <div>
                                     <AiOutlineArrowLeft
                                         color='white'
-                                        size='50px'
+                                        size='1.15rem'
                                         cursor='pointer'
                                         onClick={() => getAnotherPhoto('prev')}
                                         display={shownPhotoIndex === 0 ? 'none' : 'initial'}
@@ -80,7 +80,7 @@ export default function Home() {
                                 <div>
                                     <AiOutlineArrowRight
                                         color='white'
-                                        size='50px'
+                                        size='1.15rem'
                                         cursor='pointer'
                                         onClick={() => getAnotherPhoto('next')}
                                         display={shownPhotoIndex === photos.length ? 'none' : 'initial'}

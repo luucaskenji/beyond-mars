@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { UserContext } from '../contexts/UserContext';
 import { PhotosContext } from '../contexts/PhotosContext';
+import mediaQuery from '../assets/mediaQuery';
 
 export default function Header() {
     const [edit, setEdit] = useState(false);
@@ -71,6 +72,11 @@ const StyledHeader = styled.header`
     top: 0;
     left: 0;
 
+    ${mediaQuery} {
+        height: 65px;
+        padding: 0 15px;
+    }
+
     button {
         font-family: 'Sarabun', sans-serif;
         font-size: 0.6rem;
@@ -84,6 +90,10 @@ const StyledHeader = styled.header`
 
     button:last-child {
         margin-left: 70px;
+
+        ${mediaQuery} {
+            margin-left: 25px;
+        }
     }
 `;
 
