@@ -102,4 +102,8 @@ const NameInput = styled.input`
     font-family: 'Sarabun', sans-serif;
     font-size: 0.6rem;
     padding-left: 12px;
+
+    ${mediaQuery} {
+        width: 45%;
+    }
 `;
